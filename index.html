@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>SS Agrawal TechFest 2024</title> 
+  <!-- Bootstrap CSS CDN --> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <!-- Material Icons CDN --> 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  <style>
+    /* Reset and base */
+    body, html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fbfc;
+      color: #212529;
+      position: relative;
+    }
+    a {
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    /* Top Navigation Bar */
+    .top-nav {
+      background: white;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      padding: 0.35rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 3000;
+    }
+    .top-nav .container-fluid {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .top-nav .navbar-nav {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+    .top-nav .nav-link {
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.95rem;
+      padding: 0.25rem 0.3rem;
+      transition: color 0.3s ease;
+    }
+    .top-nav .nav-link:hover,
+    .top-nav .nav-link.active {
+      color: #007bff;
+      border-bottom: 2px solid #007bff;
+    }
+    .top-nav .navbar-toggler {
+      border: none;
+    }
+    .top-nav .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Logo Section */
+    .logo-section {
+      background: white;
+      padding: 1.2rem 1.5rem 1rem;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.06);
+      text-align: center;
+      max-width: 1140px;
+      margin: 0 auto 2rem;
+    }
+    .logo-section .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: none;
+    }
+    .logo-section .logo img {
+      width: 90px;
+      height: auto;
+      filter: drop-shadow(0 0 5px #007bff);
+    }
+    .logo-section .logo-text {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #007bff;
+      letter-spacing: 1.3px;
+      white-space: nowrap;
+    }
+
+    /* Hanging Registration Card */
+    #hanging-card {
+      position: fixed;
+      top: 112px; /* Below top nav + logo section */
+      right: 20px;
+      background: #007bff;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(0 123 255 / 0.4);
+      cursor: default;
+      z-index: 2100;
+      animation: swing 4s ease-in-out infinite;
+      user-select: none;
+      white-space: nowrap;
+    }
+    @keyframes swing {
+      0%, 100% {
+        transform: rotate(3deg);
+        box-shadow:
+          0 0 15px #007bff,
+          0 0 40px #007bff;
+      }
+      50% {
+        transform: rotate(-3deg);
+        box-shadow:
+          0 0 25px #0056b3,
+          0 0 50px #0056b3;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1140px;
+      margin: 0 auto 5rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 1.5rem;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #1a3e72;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .hero-text p {
+      font-size: 1.25rem;
+      color: #495057;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #0056b3;
+      outline: none;
+    }
+    .hero-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1140px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a3e72;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 0.3rem;
+      max-width: fit-content;
+    }
+    section p.lead {
+      font-size: 1.1rem;
+      color: #495057;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* Cards for events */
+    .card-deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .card {
+      flex: 1 1 300px;
+      border-radius: 12px;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
+      transition: box-shadow 0.3s ease;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      padding: 1.8rem 1.5rem;
+      color: #212529; /* Changed to match other content color */
+    }
+    .card:hover {
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.15);
+    }
+    .card h3 {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      color: #212529;
+    }
+    .card time {
+      font-weight: 600;
+      color: #007bff;
+      margin-bottom: 1rem;
+      display: block;
+      font-size: 0.95rem;
+    }
+    .card p {
+      flex-grow: 1;
+      color: #212529; /* Changed to match other content */
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    /* Registration CTA */
+    .register-cta {
+      background: #007bff;
+      color: white;
+      border-radius: 14px;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgb(0 123 255 / 0.15);
+      margin-bottom: 4rem;
+    }
+    .register-cta h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .register-cta p {
+      color: #dbe9ff;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .register-cta a.btn {
+      font-size: 1.3rem;
+      padding: 0.9rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgb(0 123 255 / 0.4);
+      transition: background-color 0.3s ease;
+    }
+    .register-cta a.btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* New Section: Instant Registration Notice */
+    #instant-registration-notice {
+      max-width: 1140px;
+      margin: 3rem auto 1.5rem auto;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(90deg, #7c3aed 0%, #5b21b6 100%);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+      user-select: none;
+      /* Animation applies only here */
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    /* pulseGlow animation applied ONLY to #instant-registration-notice */
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 8px rgba(124, 58, 237, 0.8),
+          0 0 12px rgba(124, 58, 237, 0.6),
+          0 0 20px rgba(124, 58, 237, 0.4);
+        transform: scale(1);
+      }
+      50% {
+        text-shadow:
+          0 0 16px rgba(124, 58, 237, 1),
+          0 0 24px rgba(124, 58, 237, 0.8),
+          0 0 32px rgba(124, 58, 237, 0.6);
+        transform: scale(1.03);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #f1f5fa;
+      padding: 2.5rem 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #666e7a;
+      border-top: 1px solid #dee2e6;
+    }
+    footer .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    footer .social-icons a {
+      margin-left: 1rem;
+      color: #007bff;
+      font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+    footer .social-icons a:hover {
+      color: #0056b3;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .top-nav .container-fluid {
+        justify-content: center !important;
+      }
+      .top-nav .navbar-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer .social-icons {
+        margin-top: 0.7rem;
+      }
+      .logo-section .logo-text {
+        font-size: 1.5rem;
+        white-space: normal;
+      }
+      #hanging-card {
+        top: 140px;
+        right: 10px;
+        font-size: 1rem;
+        padding: 0.7rem 1.3rem;
+      }
+      /* Responsive for department cards */
+      .dept-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    /* === Department Cards Section === */
+    #departments-section {
+      max-width: 1140px;
+      margin: 1.5rem auto 4rem auto;
+      padding: 0 1.5rem;
+    }
+    #departments-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a3e72;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 0.3rem;
+      max-width: fit-content;
+    }
+    /* Dept cards grid */
+    .dept-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .dept-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .dept-card:hover,
+    .dept-card:focus-within {
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+    }
+    .dept-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #ede9fe;
+      padding-bottom: 8px;
+    }
+    /* Events list */
+    .events-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .event-item {
+      background: #f9f7ff;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #4c1d95;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background-color 0.25s ease;
+      border: 1.5px solid transparent;
+      user-select: none;
+    }
+    .event-item:hover,
+    .event-item:focus {
+      background-color: #e0d7fa;
+      outline: none;
+      border-color: #7c3aed;
+    }
+    .event-item .material-icons {
+      font-size: 20px;
+      color: #7c3aed;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 32px;
+      overflow-y: auto;
+      user-select: text;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    /* Modal Content */
+    .modal {
+      background: white;
+      border-radius: 16px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 16px 48px rgba(124, 58, 237, 0.3);
+      padding: 32px 32px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Modal Close Button */
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      color: #7c3aed;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover,
+    .modal-close:focus {
+      color: #5b21b6;
+      outline: none;
+    }
+    .modal h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 24px;
+      text-align: center;
+      user-select: text;
+    }
+    /* Registration form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 6px;
+      user-select: text;
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.8px solid #ddd6fe;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+      color: #374151;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 8px rgba(124, 58, 237, 0.3);
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+    }
+    button[type="submit"] {
+      background-color: #7c3aed;
+      color: white;
+      font-weight: 700;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: #5b21b6;
+      outline: none;
+    }
+
+    /* Responsive for department cards */
+    @media (max-width: 768px) {
+      .dept-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    /* Chosen event display section */
+    #chosen-event-section {
+      max-width: 1140px;
+      margin: 2rem auto 4rem auto;
+      padding: 0 1.5rem;
+      background: #eef2ff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+      color: #3730a3;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <!-- Top navigation bar with toggler for mobile --> 
+  <nav class="top-nav navbar navbar-expand-md navbar-light" aria-label="Primary navigation"> 
+   <div class="container-fluid"> 
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> 
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> 
+     <ul class="navbar-nav"> 
+      <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li> 
+      <li class="nav-item"><a class="nav-link" href="#about">About</a></li> 
+      <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li> 
+      <li class="nav-item"><a class="nav-link btn btn-primary px-3 text-white ms-md-3" href="#departments-section" style="font-weight:600;">Register</a></li> 
+      <li class="nav-item"><a class="nav-link" href="#departments-section">Departments</a></li> 
+<li class="nav-item"><a class="nav-link" href="lund.html">Admin Pannel</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+  </nav> 
+  <!-- Logo Section below nav --> 
+  <div class="logo-section" role="banner" aria-label="College logo and name"> 
+   <div class="logo"> 
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf7HuKWmfb1qozMHSozt5ZRhk3Fq4ocLfCKw&amp;s" alt="SS Agrawal Institute Logo">
+    <span class="logo-text">S.S. AGRAWAL INSTITUTE OF ENGINEERING &amp; TECHNOLOGY</span> 
+   </div> 
+  </div> 
+  <!-- Hanging Registration Card --> 
+  <div id="hanging-card" aria-live="polite" aria-atomic="true" aria-label="Registration is open notification">
+    Registration is Open! 
+  </div> 
+  <main> 
+   <section id="hero" class="hero" role="banner" tabindex="0"> 
+    <div class="hero-text"> 
+     <h1>TechFest 2025</h1> 
+     <p>Innovate. Code. Create.</p> 
+     <p><strong>May 15-17, 2025 | Your College Auditorium</strong></p> 
+     <a href="#departments-section" class="btn btn-primary register-btn">Register Now</a> 
+    </div> 
+    <div class="hero-image" aria-hidden="true"> 
+     <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Technology background illustration">
+    </div> 
+   </section> 
+
+   <section id="about" aria-labelledby="about-title"> 
+    <h2 id="about-title">About TechFest</h2> 
+    <p class="lead"> 
+      TechFest 2024 is the premier college tech festival that brings together the brightest minds in technology to engage, innovate, and build tomorrow’s solutions today. Join us for three days of workshops, hackathons, tech talks, and exciting competitions. 
+    </p> 
+   </section> 
+
+   <section id="schedule" aria-labelledby="schedule-title"> 
+    <h2 id="schedule-title">Events &amp; Schedule</h2> 
+    <div class="card-deck" role="list"> 
+     <article class="card" role="listitem" tabindex="0" aria-label="Hackathon Challenge event details"> 
+      <h3>Hackathon Challenge</h3> 
+      <time datetime="2024-05-15T09:00">May 15, 9 AM - 8 PM</time> 
+      <p>Form teams and build innovative projects in 12 hours with exciting prizes.</p> 
+     </article> 
+     <article class="card" role="listitem" tabindex="0" aria-label="Workshops event details"> 
+      <h3>Workshops</h3> 
+      <time datetime="2024-05-16T10:00">May 16, 10 AM - 4 PM</time> 
+      <p>Learn about AI, Blockchain, Cloud Computing, and more from industry experts.</p> 
+     </article> 
+     <article class="card" role="listitem" tabindex="0" aria-label="Tech Talks &amp; Panels event details"> 
+      <h3>Tech Talks &amp; Panels</h3> 
+      <time datetime="2024-05-17T09:00">May 17, 9 AM - 5 PM</time> 
+      <p>Insightful sessions featuring speakers from top tech companies and startups.</p> 
+     </article> 
+    </div> 
+   </section> 
+
+   <section id="registration" class="register-cta" aria-labelledby="register-title"> 
+    <h2 id="register-title">Get Your Tickets</h2> 
+    <p>Be part of the ultimate tech experience. Register now to secure your spot!</p> 
+    <a href="#departments-section" class="btn btn-primary register-btn">Register Now</a> 
+   </section> 
+
+   <!-- New instant registration notice above departments -->
+   <section id="instant-registration-notice" role="note" aria-live="polite" aria-atomic="true">
+     Click on an event for instant Registration.
+   </section>
+
+   <section id="departments-section" aria-labelledby="departments-title"> 
+    <h2 id="departments-title">Departments and Events</h2> 
+    <div class="dept-grid" role="list" aria-label="Department event registration list">
+    </div> 
+   </section> 
+
+   <section id="chosen-event-section" aria-live="polite" aria-atomic="true" aria-label="Chosen Event Display" tabindex="0" hidden> 
+     <strong>Chosen event: </strong><span id="chosen-event-name">None</span> 
+   </section> 
+  </main> 
+  <footer role="contentinfo"> 
+   <div class="footer-container"> 
+    <span>© 2024 SS Agrawal Institute TechFest | Connect with us:</span> 
+    <span class="social-icons" aria-label="Social media links"> 
+     <a href="#" aria-label="Facebook" title="Facebook" rel="noopener"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" viewbox="0 0 24 24"> 
+       <path d="M22.675 0h-21.35C.59 0 0 .59 0 1.324v21.351C0 23.41.59 24 1.325 24h11.494v-9.294H9.691v-3.622h3.127V8.41c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.796.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.76v2.31h3.588l-.467 3.622h-3.12V24h6.116c.73 0 1.32-.59 1.32-1.325V1.325C24 .59 23.41 0 22.675 0z" />
+      </svg> 
+     </a> 
+     <a href="#" aria-label="Twitter" title="Twitter" rel="noopener"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" viewbox="0 0 24 24"> 
+       <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.723 0-4.928 2.205-4.928 4.928 0 .386.044.763.127 1.124-4.092-.205-7.725-2.163-10.157-5.144-.426.729-.67 1.577-.67 2.476 0 1.708.87 3.215 2.187 4.099-.807-.025-1.565-.247-2.228-.616v.062c0 2.386 1.695 4.374 3.946 4.825-.412.111-.849.171-1.296.171-.317 0-.626-.032-.927-.089.627 1.956 2.444 3.379 4.6 3.419-1.684 1.32-3.808 2.104-6.115 2.104-.399 0-.79-.023-1.178-.068 2.18 1.398 4.772 2.213 7.547 2.213 9.057 0 14.01-7.506 14.01-14.01 0-.213-.005-.425-.014-.637.961-.695 1.797-1.561 2.457-2.548z" /> 
+      </svg> 
+     </a> 
+     <a href="#" aria-label="Instagram" title="Instagram" rel="noopener"> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" viewbox="0 0 24 24"> 
+       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.055 1.97.24 2.43.414.59.218 1.01.48 1.453.923.443.444.705.863.923 1.453.174.46.36 1.26.414 2.43.058 1.267.07 1.647.07 4.85 0 3.204-.012 3.584-.07 4.85-.054 1.17-.24 1.97-.414 2.43-.218.59-.48 1.01-.923 1.453-.444.443-.863.705-1.453.923-.46.174-1.26.36-2.43.414-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-1.17-.054-1.97-.24-2.43-.414-.59-.218-1.01-.48-1.453-.923-.443-.444-.705-.863-.923-1.453-.174-.46-.36-1.26-.414-2.43-.058-1.266-.07-1.646-.07-4.85 0-3.204.012-3.584.07-4.85.054-1.17.24-1.97.414-2.43.218-.59.48-1.01.923-1.453.444-.443.863-.705 1.453-.923.46-.174 1.26-.36 2.43-.414 1.266-.058 1.646-.07 4.85-.07zm0-2.163C8.736 0 8.332.013 7.052.072 5.776.131 4.49.332 3.416.756 2.4 1.16 1.544 1.698.69 2.552c-.854.854-1.393 1.71-1.797 2.726C-.628 5.323-.829 6.61-.888 7.885-.947 9.165-.96 9.568-.96 12.001c0 2.433.013 2.836.072 4.115.06 1.275.26 2.561.685 3.635.404 1.013.943 1.868 1.797 2.721.854.854 1.71 1.393 2.726 1.797 1.074.425 2.36.627 3.636.685 1.28.059 1.683.072 4.114.072s2.835-.013 4.115-.072c1.275-.06 2.56-.26 3.635-.685 1.013-.404 1.868-.943 2.721-1.797.854-.854 1.393-1.71 1.797-2.726.425-1.074.627-2.36.685-3.636.059-1.28.072-1.683.072-4.115s-.013-2.835-.072-4.115c-.06-1.275-.26-2.56-.685-3.635-.404-1.013-.943-1.868-1.797-2.721-.854-.854-1.71-1.393-2.726-1.797-1.074-.425-2.36-.627-3.636-.685C14.836.013 14.433 0 12 0z" />
+      </svg> 
+     </a> 
+    </span> 
+   </div> 
+  </footer> 
+  <!-- Bootstrap JS and Popper.js --> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+  <!-- Department Cards Script --> 
+  <script>
+    const departments = [
+      {
+        name: "Computer Eng. Dept.",
+        events: [
+          "Hackathon",
+          "AI Coding Challenge",
+          "Cybersecurity Workshop",
+          "App Development Contest"
+        ]
+      },
+      {
+        name: "Civil Eng.",
+        events: [
+          "Bridge Design Competition",
+          "Structural Analysis Quiz",
+          "Concrete Mix Challenge"
+        ]
+      },
+      {
+        name: "Chemical Eng.",
+        events: [
+          "Chemical Reaction Demo",
+          "Process Design Project",
+          "Material Science Seminar"
+        ]
+      },
+      {
+        name: "Electrical Eng.",
+        events: [
+          "Circuit Design Contest",
+          "Robotics Challenge",
+          "Power Systems Quiz"
+        ]
+      },
+      {
+        name: "Mechanical Eng.",
+        events: [
+          "CAD Modeling Contest",
+          "Thermodynamics Quiz",
+          "Automobile Design Project"
+        ]
+      }
+    ];
+
+    const deptGrid = document.querySelector('.dept-grid');
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.id = 'modal';
+    modalOverlay.setAttribute('role', 'dialog');
+    modalOverlay.setAttribute('aria-modal', 'true');
+    modalOverlay.setAttribute('aria-labelledby', 'modal-title');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    modalOverlay.innerHTML = `
+      <div class="modal" role="document">
+        <button type="button" class="modal-close" aria-label="Close registration form" id="modal-close">
+          <span class="material-icons">close</span>
+        </button>
+        <h2 id="modal-title">Event Registration</h2>
+      <form id="register-form" method="POST" action="register.php" novalidate>
+  <label for="form-event">Event</label>
+  <input type="text" id="form-event" name="event" readonly required aria-required="true" />
+
+  <label for="college-name">College Name</label>
+  <input type="text" id="college-name" name="college-name" placeholder="Enter your College Name" required aria-required="true" />
+
+  <fieldset style="border:1px solid #ccc; padding: 15px; border-radius: 10px;">
+    <legend>Team Member 1 (Leader)</legend>
+    <label for="name1">Full Name</label>
+    <input type="text" id="name1" name="name1" placeholder="John Doe" required aria-required="true" />
+
+    <label for="email1">Email Address</label>
+    <input type="email" id="email1" name="email1" placeholder="email@example.com" required aria-required="true" />
+
+    <label for="phone1">Phone Number</label>
+    <input type="tel" id="phone1" name="phone1" placeholder="+1 555 123 4567" pattern="^\+?[0-9\s\-]{7,15}$" />
+  </fieldset>
+
+  <fieldset style="border:1px solid #ccc; padding: 15px; border-radius: 10px; margin-top: 20px;">
+    <legend>Team Member 2</legend>
+    <label for="name2">Full Name</label>
+    <input type="text" id="name2" name="name2" placeholder="Jane Smith" />
+
+    <label for="email2">Email Address</label>
+    <input type="email" id="email2" name="email2" placeholder="email@example.com" />
+
+    <label for="phone2">Phone Number</label>
+    <input type="tel" id="phone2" name="phone2" placeholder="+1 555 123 4567" pattern="^\+?[0-9\s\-]{7,15}$" />
+  </fieldset>
+
+  <fieldset style="border:1px solid #ccc; padding: 15px; border-radius: 10px; margin-top: 20px;">
+    <legend>Team Member 3</legend>
+    <label for="name3">Full Name</label>
+    <input type="text" id="name3" name="name3" placeholder="Alex Johnson" />
+
+    <label for="email3">Email Address</label>
+    <input type="email" id="email3" name="email3" placeholder="email@example.com" />
+
+    <label for="phone3">Phone Number</label>
+    <input type="tel" id="phone3" name="phone3" placeholder="+1 555 123 4567" pattern="^\+?[0-9\s\-]{7,15}$" />
+  </fieldset>
+
+  <label for="branch">Branch / Department</label>
+  <select id="branch" name="branch" required aria-required="true">
+    <option value="" disabled selected>Select your branch</option>
+    <option>Computer Eng. Dept.</option>
+    <option>Civil Eng.</option>
+    <option>Chemical Eng.</option>
+    <option>Electrical Eng.</option>
+    <option>Mechanical Eng.</option>
+  </select>
+
+  <button type="submit">Submit Group Registration</button>
+</form>
+
+      </div>
+    `;
+
+    document.body.appendChild(modalOverlay);
+
+    const modalCloseBtn = modalOverlay.querySelector('#modal-close');
+    const form = modalOverlay.querySelector('#register-form');
+    const formEventInput = modalOverlay.querySelector('#form-event');
+    const branchSelect = form.branch;
+    const chosenEventSection = document.getElementById('chosen-event-section');
+    const chosenEventNameSpan = document.getElementById('chosen-event-name');
+
+    // Helper: trap focus in modal
+    function trapFocus(element) {
+      const focusableElements =
+        element.querySelectorAll('a[href], area[href], input:not([disabled]):not([readonly]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]');
+      const firstElem = focusableElements[0];
+      const lastElem = focusableElements[focusableElements.length - 1];
+      element.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab' || e.keyCode === 9) {
+          if (e.shiftKey) { /* shift + tab */
+            if (document.activeElement === firstElem) {
+              e.preventDefault();
+              lastElem.focus();
+            }
+          } else { /* tab */
+            if (document.activeElement === lastElem) {
+              e.preventDefault();
+              firstElem.focus();
+            }
+          }
+        }
+        if(e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27) {
+          closeModal();
+        }
+      });
+    }
+
+    // Open Modal and set event name
+    function openModal(eventName, deptName) {
+      const fullEventName = `${eventName} (${deptName})`;
+      form.reset();
+      formEventInput.value = eventName;
+
+      branchSelect.value = deptName; // preselect branch in dropdown
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      modalOverlay.classList.add('active');
+      // Set chosen event display and show section
+      chosenEventNameSpan.textContent = fullEventName;
+      chosenEventSection.hidden = false;
+      // Focus first input: college name
+      setTimeout(() => {
+        const firstInput = document.getElementById('college-name');
+        if(firstInput) firstInput.focus();
+      }, 100);
+      trapFocus(modalOverlay);
+    }
+
+    // Close Modal
+    function closeModal() {
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      modalOverlay.classList.remove('active');
+    }
+
+    // Build department cards
+    function createDeptCards() {
+      departments.forEach(dept => {
+        const card = document.createElement('article');
+        card.className = 'dept-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        // Dept title
+        const title = document.createElement('h3');
+        title.className = 'dept-title';
+        title.textContent = dept.name;
+        card.appendChild(title);
+        // Events list
+        const ul = document.createElement('ul');
+        ul.className = 'events-list';
+        ul.setAttribute('role', 'list');
+        dept.events.forEach(ev => {
+          const li = document.createElement('li');
+          li.className = 'event-item';
+          li.setAttribute('tabindex', '0');
+          li.setAttribute('role', 'button');
+          li.setAttribute('aria-label', `Register for event ${ev} in ${dept.name}`);
+          li.textContent = ev;
+          // Add material icon to right
+          const icon = document.createElement('span');
+          icon.className = 'material-icons';
+          icon.textContent = 'event_available';
+          li.appendChild(icon);
+          li.addEventListener('click', () => openModal(ev, dept.name));
+          li.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openModal(ev, dept.name);
+            }
+          });
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+        deptGrid.appendChild(card);
+      });
+    }
+
+    // Form validation on submit
+   form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("register.php", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert(`✅ Thank you, ${form.name1.value.trim()}!\nYou have successfully registered for ${formEventInput.value}.`);
+      closeModal();
+    } else {
+      alert(`❌ Registration failed: ${result.message}`);
+    }
+  } catch (error) {
+    alert("⚠️ Error submitting the form. Please try again later.");
+    console.error("Fetch error:", error);
+  }
+});
+
+
+
+    // Close modal on close button
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Close modal on clicking outside modal content
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Smooth scroll for Register buttons added
+    document.querySelectorAll('a.register-btn, a.nav-link.btn.btn-primary').forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // For accessibility: focus the target section
+          target.setAttribute('tabindex', '-1');
+          target.focus();
+          // Remove tabindex to restore natural tab order after focus
+          target.addEventListener('blur', () => {
+            target.removeAttribute('tabindex');
+          }, { once: true });
+        }
+        // If navbar is collapsed (mobile), hide it
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+          if (bsCollapse) bsCollapse.hide();
+        }
+      });
+    });
+
+    // Initialize content
+    createDeptCards();
+  </script> 
+ 
+</body></html>
+

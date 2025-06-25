@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFest Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            background: #f5f7fa;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .form-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+        .form-box {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .form-content {
+            padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .gradient-side {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .input-field:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+        }
+        /* Apply input-field style to all relevant inputs in the signup form */
+        #signup-form input[type="text"],
+        #signup-form input[type="email"],
+        #signup-form input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+        #signup-form input[type="text"]:focus,
+        #signup-form input[type="email"]:focus,
+        #signup-form input[type="password"]:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+        .secret-code { /* This class was not applied in the original HTML, but the style is here */
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            background: linear-gradient(#fff, #fff) padding-box, 
+                        linear-gradient(135deg, #667eea, #764ba2) border-box;
+            width: 100%;
+            padding: 0.75rem 1rem;
+        }
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .form-box {
+                flex-direction: row;
+            }
+            .form-content {
+                width: 60%;
+            }
+            .gradient-side {
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-box">
+            <div class="form-content">
+                <!-- Sign In Form -->
+                <div id="signin-form">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-2">Admin Sign In</h2>
+                    <p class="text-gray-500 text-sm mb-6">Enter your credentials to access the admin panel</p>
+                    
+                    <form id="loginForm" class="mb-4" method="post" action="admin_login.php">
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="login-email" name="email" class="input-field" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                           <input type="password" id="login-password" name="password" class="input-field" required>
+                        </div>
+                        <button type="submit" class="btn">Sign In</button>
+                    </form>
+                    
+                    <p class="text-sm text-gray-500 text-center">
+                        Don't have an account? 
+                        <button id="show-signup" class="text-blue-500 font-medium cursor-pointer hover:underline">Sign Up</button>
+                    </p>
+                </div>
+                
+                <!-- Sign Up Form -->
+                <div id="signup-form" style="display: none;">
+                    <div class="flex items-center mb-4">
+                        <button id="show-signin" class="text-blue-500 font-medium flex items-center mr-3 cursor-pointer hover:underline">
+                            <i class="fas fa-arrow-left mr-1"></i> Back
+                        </button>
+                        <h2 class="text-2xl font-semibold text-gray-800">Admin Registration</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-6">Register as a TechFest organizer</p>
+                    
+                    <form id="registerForm" method="post" action="admin_register.php">
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" name="name" id="admin-name" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">University Email</label>
+                            <input type="email" name="email" id="admin-email" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Branch</label>
+                            <!-- ✅ Updated Department Field (Dropdown) -->
+<div class="input-group">
+  <label class="block text-sm font-medium text-gray-700 mb-1">Branch / Department</label>
+  <select class="input-field" name="department" id="admin-department" required>
+    <option value="">-- Select Department --</option>
+    <option value="computer_eng">computer Engineering</option>
+    <option value="civil_Eng">civil Engineering</option>
+    <option value="chemical_Eng">chemical Engineering</option>
+    <option value="electrical_Eng">electrical Engineering</option>
+    <option value="mechanical_Eng">mechanical Engineering</option>
+  </select>
+</div>
+  
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Event</label>
+                            <input type="text" name="event" id="admin-event" required>   
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" name="password" id="admin-password" required>
+                        </div>
+                        <div class="input-group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                            <input type="password" name="confirm" id="admin-confirm" required> 
+                            <div id="password-error" class="error-message">Passwords don't match</div>
+                        </div>
+                        <div class="input-group">
+                            <label class="text-xs text-gray-500 flex items-center mb-1">
+                                <i class="fas fa-lock text-blue-500 mr-1"></i> Secret Admin Code
+                            </label>
+                          <input type="password" name="code" id="admin-code" required> 
+                            <div id="code-error" class="error-message">Invalid secret code</div>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Welcome Side -->
+            <div class="gradient-side">
+                <div class="welcome-content">
+                    <i class="fas fa-graduation-cap text-5xl mb-4"></i>
+                    <h2 class="text-2xl font-semibold mb-2">TechFest Admin Portal</h2>
+                    <p class="text-sm mb-6 opacity-90">
+                        Welcome to the exclusive admin panel for university professors organizing the annual TechFest
+                    </p>
+                    <div class="w-12 h-0.5 bg-white opacity-50 my-4 mx-auto"></div>
+                    <p class="text-xs opacity-80">
+                        For security, please keep your credentials and secret code confidential
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const SECRET_CODE = "AGRAWAL@2007";
+      const signinForm = document.getElementById('signin-form');
+      const signupForm = document.getElementById('signup-form');
+
+      document.getElementById('show-signup').onclick = () => {
+        signinForm.style.display = 'none';
+        signupForm.style.display = 'block';
+      };
+
+      document.getElementById('show-signin').onclick = () => {
+        signupForm.style.display = 'none';
+        signinForm.style.display = 'block';
+      };
+
+      // Registration
+      document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('admin-name').value.trim();
+        const email = document.getElementById('admin-email').value.trim();
+        const department = document.getElementById('admin-department').value;
+        const event = document.getElementById('admin-event').value.trim();
+        const password = document.getElementById('admin-password').value;
+        const confirm = document.getElementById('admin-confirm').value;
+        const code = document.getElementById('admin-code').value;
+
+        if (password !== confirm) {
+          alert("Passwords do not match.");
+          return;
+        }
+
+        if (code !== SECRET_CODE) {
+          alert("Invalid secret code.");
+          return;
+        }
+
+        fetch('admin_register.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&department=${encodeURIComponent(department)}&event=${encodeURIComponent(event)}&password=${encodeURIComponent(password)}`
+        })
+        .then(res => res.text())
+        .then(result => {
+          if (result.trim() === "success") {
+            alert("✅ Registered successfully");
+            document.getElementById('registerForm').reset();
+            signinForm.style.display = 'block';
+            signupForm.style.display = 'none';
+          } else {
+            alert("❌ Registration failed: " + result);
+          }
+        });
+      });
+
+      // Login
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        fetch('admin_login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+        })
+        .then(res => res.text())
+        .then(result => {
+          if (result.trim() === "success") {
+            window.location.href = "admin_panel.php";
+          } else {
+            alert("❌ Login failed: " + result);
+          }
+        });
+      });
+    });
+  </script>
+
+</body></html>
